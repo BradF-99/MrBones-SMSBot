@@ -6,6 +6,7 @@ const helmet = require('helmet');
 const bodyParser = require('body-parser');
 
 const bonesRouter = require('./routes/bonesRouter');
+const errorRouter = require('./routes/errorRouter');
 
 const app = express();
 
@@ -18,5 +19,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(helmet());
 
 app.use('/bones', bonesRouter);
+app.use('/error', errorRouter);
 
 module.exports = app;
