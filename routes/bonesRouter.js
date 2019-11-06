@@ -13,10 +13,10 @@ router.post('/', async (req, res, next) => {
         const response = await getMrBones(req.body.Body);
         if (response || response !== ""){
             const twiml = await twimlModule.textToTwiml(response);
+            return res.end(twiml);
         } else {
             next(e);
         }
-        return res.end(twiml);
     } catch (e) {
         next(e);
     }
