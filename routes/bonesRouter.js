@@ -6,7 +6,7 @@ const router = express.Router();
 const axios = require('axios');
 const twimlModule = require('../modules/twimlModule');
 
-router.post('/', async (req, res) => {
+router.post('/', async (req, res, next) => {
     try {
         res.setHeader('Content-Type', 'text/xml');
         res.statusCode = 200;
@@ -14,7 +14,7 @@ router.post('/', async (req, res) => {
         const twiml = await twimlModule.textToTwiml(response);
         return res.end(twiml);
     } catch (e) {
-        res.send(e);
+        next(e);
     }
 });
 
