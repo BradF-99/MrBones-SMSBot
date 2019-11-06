@@ -3,10 +3,9 @@ require('dotenv').config();
 const express = require('express');
 const router = express.Router();
 
-const axios = require('axios');
 const twimlModule = require('../modules/twimlModule');
 
-router.post('/', async (req, res) => {
+router.post('/', async (res) => {
     try {
         res.setHeader('Content-Type', 'text/xml');
         res.statusCode = 200;
