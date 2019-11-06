@@ -11,7 +11,11 @@ router.post('/', async (req, res, next) => {
         res.setHeader('Content-Type', 'text/xml');
         res.statusCode = 200;
         const response = await getMrBones(req.body.Body);
-        const twiml = await twimlModule.textToTwiml(response);
+        if (response || response !== ""){
+            const twiml = await twimlModule.textToTwiml(response);
+        } else {
+            next(e);
+        }
         return res.end(twiml);
     } catch (e) {
         next(e);
