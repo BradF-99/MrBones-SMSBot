@@ -1,6 +1,6 @@
 {
   "name": "mrbones-smsbot",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
@@ -14,6 +14,7 @@
     "express": "~4.16.1",
     "helmet": "^3.21.2",
     "morgan": "~1.9.1",
+    "random-useragent": "^0.3.1",
     "twilio": "^3.37.0"
   }
 }
