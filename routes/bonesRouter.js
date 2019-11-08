@@ -4,6 +4,7 @@ const express = require('express');
 const router = express.Router();
 
 const axios = require('axios');
+const randomUseragent = require('random-useragent');
 const twimlModule = require('../modules/twimlModule');
 
 router.post('/', async (req, res, next) => {
@@ -24,7 +25,8 @@ router.post('/', async (req, res, next) => {
 
 async function getMrBones(query){
     const encodedQuery = encodeURI(query);
-    const response = await axios.get(process.env.MRBONESAPIURL + encodedQuery);
+    const userAgent = randomUseragent.getRandom();
+    const response = await axios.get(process.env.MRBONESAPIURL + encodedQuery, {headers: {'User-Agent': userAgent}});
     return response.data.reply;
 }
 
